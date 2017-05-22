@@ -1,0 +1,23 @@
+#TempFiles for tex.
+
+*.aux
+
+*.ilg
+
+*.log
+
+*.synctex.gz
+
+*.out
+
+*.blg
+
+*.dvi
+
+*.bak
+
+*~
+
+
+funny_names.pdf
+
