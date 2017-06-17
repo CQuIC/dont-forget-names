@@ -4,7 +4,8 @@
 %\usepackage[breaklinks=true]{hyperref}
 \usepackage{relsize}
 %\usepackage{url}
-
+\usepackage{tikz}
+\usetikzlibrary{decorations.text}
 \usepackage{bm}
 \usepackage{bbm}
 \usepackage{listings}
@@ -13,7 +14,6 @@
 \usepackage{graphicx}
 \usepackage{graphics}
 \usepackage{epsfig}
-\usepackage{color}
 \usepackage{multirow}
 %\usepackage[colorlinks]{hyperref}
 \usepackage{fancyhdr}
@@ -23,7 +23,7 @@
 % underline tool
 \usepackage[normalem]{ulem}
 \usepackage[low-sup]{subdepth}
-\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage{xcolor}
 % triple lines in colors
 \makeatletter
 \newcommand\uuuline{\bgroup\markoverwith%
@@ -66,10 +66,11 @@
 \begin{document}
 
 \title{Don't forget names}
-\author{Josh Combes, Adrian Chapman and others}
+\author{Josh Combes, Adrian Chapman and Quanta}
 \affiliation{Center for Quantum Information and Control, University of New Mexico, Albuquerque, NM 87131 USA}
+\homepage{https://github.com/CQuIC/dont-forget-names}
 
-\date{September 3, 2015} % delete this line to display the current date
+\date{June 17 , 2017} % delete this line to display the current date
 \begin{abstract}
 \end{abstract}
 \maketitle
@@ -141,7 +142,7 @@ Z(h) = -a_n g
 \end{align}
 
 % Below is the part made by Adrian Chapman, Ninnat Dangniam and others on Sep 3rd, 2015.
-\newpage
+%\newpage
 \begin{align}
 \oint \vec{A} \cdot d \vec{r} &= i \vec{a} \cdot \vec{n}
 \end{align}
@@ -209,6 +210,34 @@ J = \frac{\partial (a, c)}{\partial (o, b)}
 \begin{align} %Zeke
 Z = m c^2 + \frac{1}{2} m v^2
 \end{align}
+
+% The block for 2017.
+\begin{equation} % Gloria
+\begin{tikzpicture}[scale=1.5]
+% Define variables.
+\def\crad{1.8cm} 		% Radius of the big circle.
+\def\arad{0.2cm} 	% Radius of the angle arc.
+\def\sa{80}			% Starting angle of the angle arc.
+\def\ea{190}		% Ending angle of the angle arc.
+\coordinate (O) at (0,0);
+%\coordinate (R) at (-0.07cm,0.71cm);
+\coordinate (EP) at ([shift=(\ea:\arad)]0,0);
+\coordinate (SP) at ([shift=(\sa:\arad)]0,0);
+% Radius lines.
+\draw (O) -- ++(\sa:\crad)
+      (O) -- ++(\ea:\crad);
+%\draw (R) node[rotate=-50] {$R^i$};
+\path (EP) edge node[sloped,anchor=west,xshift=-1.2cm,above]{$l_0=R^i\alpha$} (O);
+% Draw the big and small arcs which center at (0,0) with radius 1cm.
+%\draw[thin,black]([shift=(\ea:\crad)]0,0) arc (\ea:(360+\sa):\crad);
+\draw[very thick,red,<->] ([shift=(\sa:\crad)]0,0) arc (\sa:\ea:\crad); 
+\path[sloped,decoration={text along path,reverse path,text={G},text align=center,raise=-0.7cm},decorate] ([shift=(\sa:\crad)]0,0) arc (\sa:\ea:\crad);
+% Draw the short arc for the angle.
+%\draw[very thick,black]([shift=(\sa:\arad)]0,0) node [left,black,yshift=0.08cm,rotate=-50]{$\alpha$} arc (\sa:\ea:\arad);
+\draw[very thick,black]([shift=(\sa:\arad)]0,0) arc (\sa:\ea:\arad);
+\filldraw[fill=black!20!white] (0,0) -- ([shift=(\sa:\arad)]0,0) arc (\sa:\ea:\arad) -- ([shift=(\ea:\arad)]0,0);
+\end{tikzpicture}
+\end{equation}
 
 
 \end{document}
